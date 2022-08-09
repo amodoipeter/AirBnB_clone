@@ -3,6 +3,8 @@
 
 import cmd
 
+from models import storage
+
 
 class HBNBCommand(cmd.Cmd):
     """class for the command interpreter"""
@@ -21,6 +23,17 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """Doesn't do anything on ENTER"""
         pass
+
+    def do_create(self, line):
+        """creates an instance of base model, saves it to json file and prints the id"""
+        if line == "" or line is None:
+            print("** class name missing **")
+        elif line not in storage.classes():
+            print("** class doesn't exist **")
+        else:
+            b = storage.classes()[line]()
+            b.save()
+            print(b.id)
 
 
 if __name__ == '__main__':
