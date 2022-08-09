@@ -7,7 +7,11 @@ import os.path
 class FileStorage:
     """Serializes instances to a JSON file and deserializes JSON file to instances"""
     __file_path = "file.json"
-    __object = {}
+    __objects = {}
+
+    def all(self):
+        """returns __objects dictionary"""
+        return FileStorage.__objects
 
     def reload(self):
         """Deserializes JSON file into __objects."""
