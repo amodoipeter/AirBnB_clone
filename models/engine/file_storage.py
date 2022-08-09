@@ -13,6 +13,11 @@ class FileStorage:
         """returns __objects dictionary"""
         return FileStorage.__objects
 
+    def new(self, obj):
+        """sets in __objects the obj with key <obj class name>.id"""
+        key = "{}.{}".format(type(obj).__name__, obj.id)
+        FileStorage.__objects[key] = obj
+
     def reload(self):
         """Deserializes JSON file into __objects."""
         if not os.path.isfile(FileStorage.__file_path):
