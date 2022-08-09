@@ -5,8 +5,12 @@ import os.path
 
 
 class FileStorage:
+    """Serializes instances to a JSON file and deserializes JSON file to instances"""
+    __file_path = "file.json"
+    __object = {}
+
     def reload(self):
-        """Deserializes json files into objects"""
+        """Deserializes JSON file into __objects."""
         if not os.path.isfile(FileStorage.__file_path):
             return
         with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
